@@ -1,46 +1,62 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="From CV to website: launching a portfolio on GitHub Pages." />
-    <title>Portfolio on GitHub Pages — Ilias Ben Kamoun</title>
+    <meta name="description" content="Lancer un portfolio scientifique sur GitHub Pages." />
+    <title>Portfolio scientifique sur GitHub Pages — Ilias Ben Kamoun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="../">Ilias Ben Kamoun</a>
-      <nav class="site-nav always-visible">
-        <a href="../">Home</a>
+    <header class="header">
+      <a class="logo" href="../">Ilias Ben Kamoun</a>
+      <button class="menu-button" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+      <nav class="navbar always-visible" id="site-nav">
+        <a href="../">Accueil</a>
         <a href="./">Blog</a>
       </nav>
     </header>
 
-    <main class="section article-page">
-      <p class="eyebrow">Web</p>
-      <h1>From CV to Website: Launching a Portfolio on GitHub Pages</h1>
-      <p class="article-meta">Published for the portfolio — 4 min read</p>
-      <article class="article-body">
+    <main>
+      <section class="home" style="min-height:auto; padding-bottom: 3rem;">
+        <div class="content">
+          <p class="eyebrow">Web</p>
+          <h3>Lancer un portfolio scientifique sur GitHub Pages</h3>
+          <p class="article-meta">Article technique — 4 min de lecture</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <article class="info-card article-body" style="max-width: 90rem; margin: 0 auto;">
         <p>
-          A personal website should be fast, simple, and easy to maintain. GitHub Pages is a great
-          fit when you want a clean static site with a custom domain.
+          Un site personnel doit être rapide, simple et facile à maintenir. GitHub Pages est une bonne
+          option lorsque l’on veut un site statique propre avec un domaine personnalisé.
         </p>
-        <h2>My setup</h2>
+        <h2>Configuration</h2>
         <ul>
-          <li>Static HTML, CSS, and minimal JavaScript.</li>
-          <li>Root-level pages for direct GitHub Pages deployment.</li>
-          <li>A CNAME file for iliasbenkamoun.me.</li>
+          <li>HTML, CSS statiques et JavaScript minimal.</li>
+          <li>Pages à la racine pour un déploiement direct sur GitHub Pages.</li>
+          <li>Fichier CNAME pour iliasbenkamoun.me.</li>
         </ul>
-        <h2>Next step</h2>
+        <h2>Étape suivante</h2>
         <p>
-          The website can later be upgraded to a framework like Astro or Next.js if you want more
-          dynamic content management.
+          Le site pourra plus tard évoluer vers Astro ou Next.js si vous voulez une gestion plus dynamique
+          du contenu scientifique et des publications.
         </p>
-      </article>
-      <p><a href="./">← Back to blog</a></p>
+        </article>
+        <div style="max-width: 90rem; margin: 2rem auto 0; font-size: 1.6rem;">
+          <a href="./">← Retour au blog</a>
+        </div>
+      </section>
     </main>
+
+    <footer class="footer">
+      <p>© 2026 Ilias Ben Kamoun</p>
+    </footer>
+
+    <script src="../main.js"></script>
   </body>
 </html>

@@ -1,13 +1,13 @@
-# Ilias Ben Kamoun — Portfolio + Blog
+# Ilias Ben Kamoun — Portfolio scientifique + Blog
 
-A simple static portfolio and blog website ready for GitHub Pages.
+Un site statique de portfolio scientifique et de blog technique, prêt pour GitHub Pages.
 
 ## What is included
-- Portfolio homepage with CV content
-- Blog landing page
-- 3 sample blog posts
+- Homepage portfolio avec contenu CV et recherche
+- Page blog scientifique
+- 3 articles d’exemple orientés IA et data
 - Custom domain file for `iliasbenkamoun.me`
-- Responsive layout and simple mobile navigation
+- Mise en page responsive et navigation mobile simple
 
 ## Local use
 This is a static site, so you can open `index.html` directly in a browser.
@@ -37,9 +37,9 @@ For a better local preview, use any static server. Example:
 5. Enable HTTPS once GitHub finishes validating the domain.
 
 ## Edit content
-- Update your email and social links in `index.html`
-- Replace placeholder blog text with your real posts
-- Add more posts in the `blog/` folder
+- Mettre à jour votre email et vos liens sociaux dans `index.html`
+- Remplacer les articles d’exemple par vos vraies publications
+- Ajouter d’autres articles dans le dossier `blog/`
 
 ## Recommended next improvement
 If you want easier blog management later, this static site can be migrated to Astro or Next.js.

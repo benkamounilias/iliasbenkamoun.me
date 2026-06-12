@@ -1,48 +1,65 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Building a Multimodal AI Pipeline for Healthcare." />
-    <title>Multimodal AI Pipeline — Ilias Ben Kamoun</title>
+    <meta name="description" content="Pipeline multimodal pour la santé et l'IA médicale." />
+    <title>Pipeline multimodal pour la santé — Ilias Ben Kamoun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="../">Ilias Ben Kamoun</a>
-      <nav class="site-nav always-visible">
-        <a href="../">Home</a>
+    <header class="header">
+      <a class="logo" href="../">Ilias Ben Kamoun</a>
+      <button class="menu-button" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+      <nav class="navbar always-visible" id="site-nav">
+        <a href="../">Accueil</a>
         <a href="./">Blog</a>
       </nav>
     </header>
 
-    <main class="section article-page">
-      <p class="eyebrow">AI / ML</p>
-      <h1>Building a Multimodal AI Pipeline for Healthcare</h1>
-      <p class="article-meta">Published for the portfolio — 6 min read</p>
-      <article class="article-body">
+    <main>
+      <section class="home" style="min-height:auto; padding-bottom: 3rem;">
+        <div class="content">
+          <p class="eyebrow">AI / ML</p>
+          <h3>Pipeline multimodal pour la santé</h3>
+          <p class="article-meta">Article scientifique — 6 min de lecture</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <article class="info-card article-body" style="max-width: 90rem; margin: 0 auto;">
         <p>
-          Multimodal healthcare AI is challenging because image, video, and clinical metadata rarely
-          arrive in a clean, aligned format. My main goal is to keep the pipeline reproducible,
-          measurable, and interpretable.
+          L’IA multimodale en santé est complexe car les images, les vidéos et les métadonnées cliniques
+          arrivent rarement dans un format propre et parfaitement aligné. L’objectif principal est de
+          construire une chaîne reproductible, mesurable et interprétable.
         </p>
-        <h2>What matters most</h2>
+        <h2>Points clés</h2>
         <ul>
-          <li>Reliable preprocessing across heterogeneous medical sources.</li>
-          <li>Strong experiment tracking and versioning for repeatable results.</li>
-          <li>Explainability with SHAP and Grad-CAM for clinical review.</li>
+          <li>Prétraitement fiable sur des sources médicales hétérogènes.</li>
+          <li>Suivi rigoureux des expériences et versioning pour la reproductibilité.</li>
+          <li>Explicabilité avec SHAP et Grad-CAM pour l’analyse clinique.</li>
         </ul>
-        <h2>My approach</h2>
+        <h2>Approche adoptée</h2>
         <p>
-          I like to start with a simple baseline, then improve data quality, feature engineering,
-          and evaluation before increasing model complexity. That usually gives faster and more
-          trustworthy progress than jumping directly to a large architecture.
+          Je préfère commencer par une baseline simple, puis améliorer la qualité des données,
+          l’ingénierie des features et l’évaluation avant d’augmenter la complexité du modèle.
+          Cette méthode donne souvent des résultats plus rapides et plus fiables qu’une approche
+          directement centrée sur une architecture lourde.
         </p>
-      </article>
-      <p><a href="./">← Back to blog</a></p>
+        </article>
+        <div style="max-width: 90rem; margin: 2rem auto 0; font-size: 1.6rem;">
+          <a href="./">← Retour au blog</a>
+        </div>
+      </section>
     </main>
+
+    <footer class="footer">
+      <p>© 2026 Ilias Ben Kamoun</p>
+    </footer>
+
+    <script src="../main.js"></script>
   </body>
 </html>
