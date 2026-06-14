@@ -1,0 +1,16 @@
+# Protéger les fichiers CSV contre l'accès direct
+<Files "*.csv">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Protéger les fichiers de sauvegarde
+<Files "backup_*.csv">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Optionnel: Redirection HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
