@@ -245,7 +245,7 @@ img {
   color: #c83232;
 }
 
-h1 {
+h2 {
   max-width: 7ch;
   margin: 0;
   font-family: var(--display-font);
@@ -774,7 +774,7 @@ body.compact .story--lead .dek {
 }
 
 @media (max-width: 1200px) {
-  h1 {
+  h2 {
     font-size: 5rem;
   }
 }
@@ -812,7 +812,7 @@ body.compact .story--lead .dek {
 }
 
 @media (max-width: 800px) {
-  h1 {
+  h2 {
     font-size: 3rem;
   }
 }
