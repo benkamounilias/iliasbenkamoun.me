@@ -1,219 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ilias Ben Kamoun — portfolio IA, ML et blog." />
-    <meta name="theme-color" content="#353384" />
-    <title>Ilias Benkmoun - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ilias Ben Kamoun — Portfolio & Blog</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <a class="logo" href="#home">Ilias Benkamoun</a>
-      <button class="menu-button" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
-      <nav class="navbar" id="site-nav">
-        <a href="#about">À propos</a>
-        <a href="#experience">Expériences</a>
-        <a href="#projects">Projets</a>
-        <a href="#skills">Compétences</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <main class="shell">
+      <header class="masthead">
+        <div class="issue-kicker">
+          <span>May 2026 build</span>
+          <span>Portfolio scientifique</span>
+          <span>Ilias Ben Kamoun</span>
+        </div>
 
-    <main id="home">
-      <section class="home">
-        <div class="content">
-          <p class="eyebrow">Portfolio scientifique • IA • Blog de recherche</p>
-          <h3>Construire des systèmes intelligents, rigoureux et utiles.</h3>
-          <p>
-            Je suis Ilias Ben Kamoun, étudiant ingénieur en intelligence artificielle.
-            Ce site présente mon parcours, mes projets de recherche, mes expériences techniques
-            et un blog dédié aux sujets scientifiques et à l’IA appliquée.
-          </p>
-          <div class="home-buttons">
-            <a class="btn" href="#projects">Voir les projets</a>
-            <a class="btn secondary-btn" href="blog/">Lire le blog</a>
+        <div class="masthead-grid">
+          <div>
+            <p class="eyebrow">Notes from the browser</p>
+            <h1>Ilias Ben Kamoun</h1>
+            <p class="lede">Chercheur en informatique & ingénierie logicielle — je partage des notes, des expériences et des comptes-rendus de recherche appliquée.</p>
+            <p style="margin-top:18px;"><a class="story-action" href="profile.html">En savoir plus sur mon profil</a></p>
           </div>
-          <div class="contact-info">
-            <div class="contact-item"><span>📍</span><span>France / Maroc</span></div>
-            <div class="contact-item"><span>🧠</span><span>IA, ML, GenAI, RAG</span></div>
-            <div class="contact-item"><span>⚙️</span><span>Python, PyTorch, React</span></div>
+
+          <figure class="edition-art">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1100&q=80" alt="Portrait illustration">
+          </figure>
+        </div>
+      </header>
+
+      <section class="control-room" aria-label="Tidy up the feed">
+        <div class="search-field">
+          <label for="feed-search">Search</label>
+          <div class="search-combobox">
+            <input id="feed-search" type="search" placeholder="Rechercher dans mes articles..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions">
+            <div class="search-suggestions" id="search-suggestions" role="listbox" hidden></div>
           </div>
         </div>
+
+        <label class="sort-field" for="feed-sort">
+          <span>Sort</span>
+          <select id="feed-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="source">Source A-Z</option>
+            <option value="title">Title A-Z</option>
+          </select>
+        </label>
+
+        <fieldset class="density-toggle">
+          <legend>Density</legend>
+          <label>
+            <input type="radio" name="density" value="comfortable" checked>
+            <span>Roomy</span>
+          </label>
+          <label>
+            <input type="radio" name="density" value="compact">
+            <span>Compact</span>
+          </label>
+        </fieldset>
+
+        <div class="feed-stats" aria-live="polite">
+          <strong id="visible-count">12</strong> visible
+          <span><strong id="read-count">0</strong> read</span>
+          <span><strong id="saved-count">0</strong> saved</span>
+        </div>
+
+        <button class="ghost-button" id="restore-feed" type="button">Restore hidden</button>
       </section>
 
-      <section id="about" class="about section-block">
-        <h2 class="heading">À propos</h2>
-        <div class="about-content">
-          <p>
-            Mon profil combine l’IA multimodale, le machine learning, le RAG, la data science
-            et le développement web. J’aime travailler sur des problèmes concrets où l’analyse,
-            l’expérimentation et la reproductibilité sont essentielles.
-          </p>
-          <p>
-            Le site reprend l’architecture du template de référence de votre dossier <strong>/autre</strong>,
-            mais avec un contenu orienté portfolio scientifique, recherche appliquée et publication technique.
-          </p>
-        </div>
+      <section class="feed-grid" id="feed" aria-label="Articles worth a look">
+        <article class="story story--lead story--feature" data-id="post-portfolio" data-source="Blog" data-tags="portfolio" style="--accent:#c83232; --image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80')">
+          <a class="feed-source" href="blog/post-portfolio.html">Portfolio</a>
+          <time class="pub-date" datetime="2026-05-18">May 18, 2026</time>
+          <div class="story-art" aria-hidden="true"></div>
+          <h2><a href="blog/post-portfolio.html">Mon portfolio : sélection de projets et méthodes</a></h2>
+          <p class="dek">Présentation de projets, méthodes expérimentales et contributions open-source.</p>
+        </article>
+
+        <article class="story story--compact" data-id="post-multimodal-ai" data-source="Blog" data-tags="ai multimodal" style="--accent:#12666a; --image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80')">
+          <a class="feed-source" href="blog/post-multimodal-ai.html">Blog</a>
+          <time class="pub-date" datetime="2026-05-17">May 17, 2026</time>
+          <div class="story-art" aria-hidden="true"></div>
+          <h2><a href="blog/post-multimodal-ai.html">Multimodal AI : notes et implémentations</a></h2>
+          <p class="dek">Expériences et observations sur l'intégration multimodale en recherche appliquée.</p>
+        </article>
+
+        <article class="story" data-id="post-rag-for-hr" data-source="Blog" data-tags="rag hr" style="--accent:#7f4f24; --image:url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80')">
+          <a class="feed-source" href="blog/post-rag-for-hr.html">Blog</a>
+          <time class="pub-date" datetime="2026-05-16">May 16, 2026</time>
+          <div class="story-art" aria-hidden="true"></div>
+          <h2><a href="blog/post-rag-for-hr.html">RAG pour RH : applications pratiques</a></h2>
+          <p class="dek">Cas d'usage et limites de Retrieval-Augmented Generation dans les processus RH.</p>
+        </article>
+
+        <article class="story story--tall" data-id="mdn-view-transitions" data-source="MDN" data-tags="javascript transitions platform" style="--accent:#2451a6; --image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80')">
+          <a class="feed-source" href="https://developer.mozilla.org/" target="_blank" rel="noreferrer">MDN</a>
+          <time class="pub-date" datetime="2026-05-15">May 15, 2026</time>
+          <div class="story-art" aria-hidden="true"></div>
+          <h2><a href="https://developer.mozilla.org/" target="_blank" rel="noreferrer">A little motion can explain what just happened</a></h2>
+          <p class="dek">Sorting, filtering, hiding, and restoring all feel less abrupt when the page gives your eyes a moment to follow along.</p>
+        </article>
+
       </section>
 
-      <section id="experience" class="section-block">
-        <h2 class="heading">Expériences</h2>
-        <div class="experience-grid">
-          <article class="experience-card">
-            <div class="experience-header">
-              <h3 class="experience-title">Research Engineer Intern — IA Multimodale</h3>
-              <span class="experience-date">Fév. 2026 – Présent</span>
-            </div>
-            <p>Telecom SudParis — Institut Polytechnique de Paris</p>
-            <ul class="bullet-list">
-              <li>Modèles ML/DL pour la classification et la prédiction de données médicales multimodales.</li>
-              <li>Pipelines reproductibles pour données 3D, vidéo et signaux biomédicaux.</li>
-              <li>XAI avec SHAP et Grad-CAM pour l’explicabilité et l’aide à la décision.</li>
-            </ul>
-          </article>
-          <article class="experience-card">
-            <div class="experience-header">
-              <h3 class="experience-title">Ingénieur IA Générative & ML</h3>
-              <span class="experience-date">Juil. 2025 – Sept. 2025</span>
-            </div>
-            <p>Royal Air Maroc</p>
-            <ul class="bullet-list">
-              <li>Pipeline de données pour détection d’anomalies et analyse comportementale.</li>
-              <li>Système RAG pour automatiser la recherche d’information métier.</li>
-              <li>Stack : Python, Spring Boot, React, Keycloak, PostgreSQL, Power BI.</li>
-            </ul>
-          </article>
-          <article class="experience-card">
-            <div class="experience-header">
-              <h3 class="experience-title">Analyse de données & optimisation</h3>
-              <span class="experience-date">Juil. 2024 – Août 2024</span>
-            </div>
-            <p>Office National Des Aéroports</p>
-            <ul class="bullet-list">
-              <li>Structuration de données techniques pour identifier les pannes récurrentes.</li>
-              <li>Tableaux de bord de disponibilité, fiabilité et maintenance prédictive.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" class="section-block">
-        <h2 class="heading">Projets</h2>
-        <div class="projects-grid">
-          <article class="project-card">
-            <h3>P2II AI Assistant</h3>
-            <p>Assistant RAG pour documents RH sensibles avec LangChain et Hugging Face.</p>
-          </article>
-          <article class="project-card">
-            <h3>NAFAS+</h3>
-            <p>Télésurveillance cardiologique intelligente avec détection d’anomalies ECG.</p>
-          </article>
-          <article class="project-card">
-            <h3>Portfolio scientifique & blog</h3>
-            <p>Site statique GitHub Pages pensé pour présenter des projets de recherche et des articles techniques.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="skills" class="section-block skills-section">
-        <h2 class="heading">Compétences</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3>IA & ML</h3>
-            <p>Python, PyTorch, TensorFlow, Scikit-learn, RAG, Hugging Face, XAI, GenAI.</p>
-          </div>
-          <div class="skill-card">
-            <h3>Data & BI</h3>
-            <p>SQL, MongoDB, Power BI, Pandas, NumPy, nettoyage, prétraitement et analyse exploratoire.</p>
-          </div>
-          <div class="skill-card">
-            <h3>Développement</h3>
-            <p>Spring Boot, FastAPI, Flask, ReactJS, REST APIs, Docker, CI/CD et architecture modulaire.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block">
-        <h2 class="heading">Formation</h2>
-        <div class="education-grid">
-          <article class="education-card">
-            <h3>Master Ingénierie en Intelligence Artificielle</h3>
-            <p>Université Paris 8 Vincennes - Saint-Denis — 2026 à 2027</p>
-          </article>
-          <article class="education-card">
-            <h3>Diplôme d’ingénieur d’État en Informatique et Réseaux</h3>
-            <p>École Marocaine des Sciences de l’Ingénieur — 2023 à 2026</p>
-          </article>
-          <article class="education-card">
-            <h3>DEUST — Mathématiques, informatique et physique</h3>
-            <p>Faculté des sciences et techniques de Mohammedia — 2021 à 2023</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-block">
-        <h2 class="heading">Certifications & Engagement</h2>
-        <div class="two-columns">
-          <article class="info-card">
-            <h3>Certifications</h3>
-            <ul class="bullet-list">
-              <li>Oracle Cloud Infrastructure Generative AI Professional</li>
-              <li>Power BI Fundamentals and Data Modeling</li>
-              <li>Machine Learning with Python</li>
-            </ul>
-          </article>
-          <article class="info-card">
-            <h3>Engagement associatif</h3>
-            <ul class="bullet-list">
-              <li>Co-fondateur du club FSTPress</li>
-              <li>Community Manager pour LISTENTOMYVOICE</li>
-              <li>Bénévole Forum Entreprises FSTM 2023</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="blog" class="blog section-block">
-        <h2 class="heading">Blog</h2>
-        <div class="blog-grid">
-          <article class="blog-card">
-            <span class="tag">AI / ML</span>
-            <h3><a href="blog/post-multimodal-ai.html">Pipeline multimodal pour la santé</a></h3>
-            <p>Notes sur les données, l’entraînement reproductible et l’explicabilité clinique.</p>
-          </article>
-          <article class="blog-card">
-            <span class="tag">GenAI</span>
-            <h3><a href="blog/post-rag-for-hr.html">Concevoir un assistant RAG RH</a></h3>
-            <p>Retour d’expérience sur la recherche sémantique, la qualité de récupération et le support interne.</p>
-          </article>
-          <article class="blog-card">
-            <span class="tag">Web</span>
-            <h3><a href="blog/post-portfolio.html">Lancer un portfolio scientifique sur GitHub Pages</a></h3>
-            <p>Déploiement simple, domaine personnalisé et structure statique claire.</p>
-          </article>
-        </div>
-        <p class="blog-link"><a href="blog/">Voir tous les articles scientifiques →</a></p>
-      </section>
-
-      <section id="contact" class="section-block contact">
-        <h2 class="heading">Contact</h2>
-        <div class="contact-grid">
-          <a class="contact-pill" href="mailto:hello@iliasbenkamoun.me">hello@iliasbenkamoun.me</a>
-          <a class="contact-pill" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="contact-pill" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </section>
+      <p class="empty-state" id="empty-state" hidden>Nothing matches that search yet. Try a source, a topic, or a shorter word.</p>
     </main>
-
-    <footer class="footer">
-      <p>© 2026 Ilias Ben Kamoun</p>
-    </footer>
 
     <script src="main.js"></script>
   </body>
