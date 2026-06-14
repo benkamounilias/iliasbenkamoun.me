@@ -246,7 +246,7 @@ img {
 }
 
 h1 {
-  max-width: 9ch;
+  max-width: 7ch;
   margin: 0;
   font-family: var(--display-font);
   font-size: 9.6rem;
