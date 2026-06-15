@@ -100,16 +100,9 @@ body {
   color: var(--muted);
 }
 
-/* ANIMATION */
 .reveal {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.6s;
-}
-
-.reveal.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* RESPONSIVE */
