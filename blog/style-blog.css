@@ -29,7 +29,7 @@ body { padding-bottom: 3em; margin: 0; }
   width: 100%;
   z-index: 9999;
 
-  background: rgba(25, 25, 25, 0.85);
+  background: #f6f1e7;
   backdrop-filter: blur(10px);
 
   border-bottom: 1px solid rgba(252, 247, 4, 0.15);
@@ -47,7 +47,7 @@ body { padding-bottom: 3em; margin: 0; }
 
 /* logo */
 .simple-header .logo {
-  color: var(--yellow);
+  color: var(--black);
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 1px;
