@@ -1,130 +1,173 @@
-@import 'modular-scale'
-@import url(https://fonts.googleapis.com/css?family=Old+Standard+TT:400|Lora:400)
+@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT:400|Lora:400');
 
-$ms-base: 1em
-$ms-ratio: $major-third
+:root {
+  --yellow: #fcf704;
+  --cement: #ccc;
+  --black: #191919;
+}
 
-$yellow: #fcf704
-$cement: #ccc
-$black: #191919
+/* base */
+html {
+  font: 400 1em/1.33 'Lora', serif;
+  background-color: var(--black);
+}
 
-=mq($w: 55em)
-	@media (min-width: $w)
-		@content
+body {
+  padding-bottom: 3em;
+  margin: 0;
+}
 
-html
-	font: 400 1em/1.33 'Lora', serif
-	background-color: $black
+/* profile image */
+.profile {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/unsplash-man-01.jpg') center 30%;
+  height: 50vh;
+  background-size: cover;
+}
 
-body
-	padding-bottom: 3em
+/* layout desktop */
+@media (min-width: 55em) {
+  .profile {
+    width: 40%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: auto;
+  }
 
-.profile
-	background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/unsplash-man-01.jpg') center 30%
-	height: 50vh
-	background-size: cover
-	+mq
-		width: 40%
-		position: fixed
-		top: 0
-		left: 0
-		bottom: 0
-		height: auto // reset
-	+mq(80em)
-		width: 50%
+  article {
+    margin-left: 40%;
+    position: relative;
+    max-width: 66em;
+  }
+}
 
-article
-	color: $cement
-	+mq
-		margin-left: 40%
-		position: relative
-		max-width: 66em
-	+mq(80em)
-		margin-left: 50%
+@media (min-width: 80em) {
+  .profile {
+    width: 50%;
+  }
 
-header
-	text-align: center
-	padding: 0 2em
+  article {
+    margin-left: 50%;
+  }
+}
 
-h1
-	font-family: 'Old Standard TT', serif
-	color: $yellow
-	text-transform: uppercase
-	font-weight: 400
+/* article */
+article {
+  color: var(--cement);
+}
+
+/* header */
+header {
+  text-align: center;
+  padding: 0 2em;
+}
+
+h1 {
+  font-family: 'Old Standard TT', serif;
+  color: var(--yellow);
+  text-transform: uppercase;
+  font-weight: 400;
+}
 
 .nth-line-1,
-.nth-line-2
-	line-height: 1
+.nth-line-2 {
+  line-height: 1;
+}
 
-.nth-line-1
-	font-size: 19vw
-	+mq
-		font-size: 10.5vw
+.nth-line-1 {
+  font-size: 19vw;
+}
 
-.nth-line-2
-	font-size: 14.5vw
-	+mq
-		font-size: 8vw
-	
-.lead
-	color: $cement
-	font-size: ms(2)
-	max-width: 20em
-	margin: 0 auto
-	text-align: center
+.nth-line-2 {
+  font-size: 14.5vw;
+}
 
-hr
-	border: none
-	background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/hr-01.png') no-repeat center
-	height: 40px
-	margin: 5em 0
+@media (min-width: 55em) {
+  .nth-line-1 {
+    font-size: 10.5vw;
+  }
 
-section
-	column-width: 14em
-	column-gap: 1.33em
-	padding: 0 1em
-	+mq
-		padding: 0 3em
+  .nth-line-2 {
+    font-size: 8vw;
+  }
+}
 
-section p:first-of-type:first-letter
-	color: $yellow
-	float: left
-	font-size: 7em
-	line-height: 1
-	margin-top: -0.2em
-	margin-bottom: -0.2em
-	margin-right: 0.1em
+.lead {
+  color: var(--cement);
+  font-size: 1.2rem;
+  max-width: 20em;
+  margin: 0 auto;
+}
 
-p
-	+mq
-		// text-align: justify
+/* separator */
+hr {
+  border: none;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/hr-01.png') no-repeat center;
+  height: 40px;
+  margin: 5em 0;
+}
 
-img
-	max-width: 100%
-	margin-bottom: 1.33em
-	vertical-align: middle
+/* content */
+section {
+  column-width: 14em;
+  column-gap: 1.33em;
+  padding: 0 1em;
+}
 
-blockquote
-	border-left: 0.2em solid $yellow
-	font-size: ms(3)
-	padding: 0.1em 0.5em
-	line-height: 1.5
-	margin-left: 0
-	margin-right: 0
-	quotes: "“" "”" "‘" "’"
-	&::before,
-	&::after
-		color: $yellow
-		font-size: ms(1)
-		line-height: 0
-	&::before
-		content: open-quote
-	&::after
-		content: close-quote
-	+mq
-		position: absolute
-		right: 100%
-		top: 80vh
-		width: 9em
-		background: $black
-	
+@media (min-width: 55em) {
+  section {
+    padding: 0 3em;
+  }
+}
+
+/* first letter drop cap */
+section p:first-of-type:first-letter {
+  color: var(--yellow);
+  float: left;
+  font-size: 7em;
+  line-height: 1;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+  margin-right: 0.1em;
+}
+
+img {
+  max-width: 100%;
+  margin-bottom: 1.33em;
+  vertical-align: middle;
+}
+
+/* blockquote */
+blockquote {
+  border-left: 0.2em solid var(--yellow);
+  font-size: 1.4rem;
+  padding: 0.1em 0.5em;
+  line-height: 1.5;
+  margin: 2em 0;
+  position: relative;
+}
+
+blockquote::before,
+blockquote::after {
+  color: var(--yellow);
+  font-size: 1.2rem;
+}
+
+blockquote::before {
+  content: "“ ";
+}
+
+blockquote::after {
+  content: " ”";
+}
+
+@media (min-width: 55em) {
+  blockquote {
+    position: absolute;
+    right: 100%;
+    top: 80vh;
+    width: 9em;
+    background: var(--black);
+  }
+}
