@@ -19,7 +19,7 @@ body {
 
 /* profile image */
 .profile {
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/unsplash-man-01.jpg') center 30%;
+  background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995') center 30%;
   height: 50vh;
   background-size: cover;
 }
