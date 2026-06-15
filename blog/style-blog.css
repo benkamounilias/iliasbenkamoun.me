@@ -4,41 +4,101 @@
   --yellow: #fcf704;
   --cement: #ccc;
   --black: #191919;
+
+  --beige: #f6f1e7;
+  --ink: #191919;
+  --muted: #666;
 }
 
-/* base */
+/* =========================
+   BASE
+========================= */
+
 html {
   font: 400 1em/1.33 'Lora', serif;
-  background-color: var(--black);
+  background-color: var(--beige);
 }
 
 body {
-  padding-bottom: 3em;
   margin: 0;
+  padding: 0;
+  background: var(--beige);
+  color: var(--ink);
 }
 
-/* profile image */
+/* =========================
+   HEADER FIXE SIMPLE
+========================= */
+
+.simple-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--beige);
+  border-bottom: 1px solid var(--ink);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  background: var(--ink);
+  color: var(--beige);
+}
+
+/* =========================
+   PROFILE IMAGE FIXED
+========================= */
+
 .profile {
-  background: url('https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center 30%;
-  height: 50vh;
-  background-size: cover;
+  background: url('https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?q=80&w=1926') center/cover;
+  height: 100vh;
 }
 
-/* layout desktop */
+/* desktop layout */
 @media (min-width: 55em) {
   .profile {
-    width: 40%;
     position: fixed;
-    top: 0;
+    top: 60px; /* sous header */
     left: 0;
-    bottom: 0;
-    height: auto;
+    width: 40%;
+    height: calc(100vh - 60px);
   }
 
   article {
     margin-left: 40%;
-    position: relative;
     max-width: 66em;
+    position: relative;
   }
 }
 
@@ -52,12 +112,16 @@ body {
   }
 }
 
-/* article */
+/* =========================
+   ARTICLE
+========================= */
+
 article {
-  color: var(--cement);
+  padding: 2em;
+  color: var(--ink);
 }
 
-/* header */
+/* header article */
 header {
   text-align: center;
   padding: 0 2em;
@@ -94,34 +158,23 @@ h1 {
 }
 
 .lead {
-  color: var(--cement);
+  color: var(--muted);
   font-size: 1.2rem;
   max-width: 20em;
   margin: 0 auto;
 }
 
-/* separator */
-hr {
-  border: none;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/5175/hr-01.png') no-repeat center;
-  height: 40px;
-  margin: 5em 0;
-}
+/* =========================
+   CONTENT
+========================= */
 
-/* content */
 section {
   column-width: 14em;
   column-gap: 1.33em;
   padding: 0 1em;
 }
 
-@media (min-width: 55em) {
-  section {
-    padding: 0 3em;
-  }
-}
-
-/* first letter drop cap */
+/* drop cap */
 section p:first-of-type:first-letter {
   color: var(--yellow);
   float: left;
@@ -145,165 +198,62 @@ blockquote {
   padding: 0.1em 0.5em;
   line-height: 1.5;
   margin: 2em 0;
-  position: relative;
-}
-
-blockquote::before,
-blockquote::after {
-  color: var(--yellow);
-  font-size: 1.2rem;
-}
-
-blockquote::before {
-  content: "“ ";
-}
-
-blockquote::after {
-  content: " ”";
-}
-
-@media (min-width: 55em) {
-  blockquote {
-    position: absolute;
-    right: 100%;
-    top: 80vh;
-    width: 9em;
-    background: var(--black);
-  }
-}
-
-========
-/* ==========================
-   HEADER
-========================== */
-/* =========================
-   FIX HEADER HOME STYLE
-   ========================= */
-
-.masthead--fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(246, 241, 231, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--ink);
-}
-
-/* push page content under fixed header */
-body {
-  padding-top: 160px;
-}
-
-/* small layout inside header */
-.masthead-grid--small {
-  grid-template-columns: 1fr 280px;
-  padding: 18px 0;
-}
-
-/* left side */
-.masthead-left {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.blog-title {
-  font-family: var(--display-font);
-  font-size: 3rem;
-  margin: 0;
-  border: none;
-  line-height: 1;
-}
-
-/* NAV like HOME buttons */
-.blog-nav {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.blog-nav a {
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  padding: 8px 12px;
-  border: 1px solid var(--ink);
-  border-radius: var(--radius);
-  background: var(--paper-strong);
-  transition: 0.2s;
-}
-
-.blog-nav a:hover {
-  background: var(--ink);
-  color: var(--paper-strong);
-}
-
-/* smaller image in header */
-.edition-art--small {
-  min-height: 140px;
 }
 
 /* =========================
-   FOOTER (HOME STYLE)
-   ========================= */
+   FOOTER
+========================= */
 
-.home-footer {
-  margin-top: 60px;
+.simple-footer {
+  background: var(--beige);
   border-top: 1px solid var(--ink);
-  padding: 24px;
-  background: var(--paper);
+  padding: 20px;
+  margin-top: 60px;
 }
 
-.home-footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.simple-footer p {
+  margin: 0;
   color: var(--muted);
 }
 
 .footer-links {
+  margin-top: 10px;
   display: flex;
-  gap: 16px;
+  gap: 14px;
 }
 
 .footer-links a {
   text-decoration: none;
-  font-weight: 700;
   color: var(--ink);
+  font-weight: 700;
 }
 
 .footer-links a:hover {
-  color: #c83232;
+  text-decoration: underline;
 }
 
 /* =========================
    RESPONSIVE
-   ========================= */
+========================= */
 
 @media (max-width: 700px) {
-  .masthead--fixed {
+  .profile {
     position: relative;
+    width: 100%;
+    height: 50vh;
   }
 
-  body {
-    padding-top: 0;
+  article {
+    margin-left: 0;
   }
 
-  .masthead-grid--small {
-    grid-template-columns: 1fr;
-  }
-
-  .edition-art--small {
-    display: none;
-  }
-
-  .home-footer-inner {
+  .header-inner {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
