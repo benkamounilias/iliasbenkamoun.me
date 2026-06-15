@@ -1,26 +1,111 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profil — Ilias Ben Kamoun</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      .profile-hero { max-width:900px; margin:48px auto; padding:28px; background:var(--paper-strong); border-radius:8px; }
-      .profile-hero h1{font-family:var(--display-font);font-size:2.6rem;margin:0 0 12px}
-      .profile-hero p{color:var(--muted);line-height:1.6}
-      .back-link{display:inline-block;margin-top:18px;padding:8px 12px;border:1px solid var(--ink);border-radius:8px;background:transparent}
-    </style>
-  </head>
-  <body>
-    <main class="shell">
-      <section class="profile-hero">
-        <h1>Ilias Ben Kamoun</h1>
-        <p>Je suis ingénieur en intelligence artificielle et chercheur en apprentissage automatique appliqué. Mes travaux portent sur l’IA multimodale, les systèmes RAG, l’explicabilité et les pipelines reproductibles pour données sensibles.</p>
-        <p>Sur ce site vous trouverez : mon CV, une sélection de projets (P2II AI Assistant, NAFAS+), et des articles techniques détaillant méthodologie et expérimentations.</p>
-        <p class="contacts">Contact : <a href="mailto:hello@iliasbenkamoun.me">hello@iliasbenkamoun.me</a> — <a href="https://github.com/benkamounilias" target="_blank" rel="noreferrer">GitHub</a> — <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></p>
-        <a class="back-link" href="index.html">← Retour</a>
-      </section>
-    </main>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ilias Benkamoun — Profile</title>
+
+  <link rel="stylesheet" href="profile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="logo">Ilias Benkamoun</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog/">Blog</a>
+  </nav>
+</header>
+
+<main class="paper">
+
+  <!-- HERO -->
+  <section class="hero reveal">
+    <h1>Alternant Data / IA — Ingénieur IA</h1>
+    <p class="contact">
+      📞 +33 766 47 00 86 · ✉️ benkamounilias@gmail.com · 📍 Paris · 🔗 LinkedIn
+    </p>
+
+    <p class="summary">
+      Étudiant en dernière année d’ingénierie informatique, admis en Master IA (Paris 8).
+      Expérience solide en Machine Learning, Deep Learning, RAG et systèmes IA appliqués.
+      Recherche une alternance Data / IA dès septembre 2026.
+    </p>
+  </section>
+
+  <!-- SECTIONS -->
+  <section class="grid">
+
+    <div class="card reveal">
+      <h2>Formation</h2>
+      <ul>
+        <li><b>Master IA (I2A)</b> — Paris 8 (2026–2027)</li>
+        <li><b>Ingénieur Informatique & MIAGE</b> — EMSI Casablanca (2023–2026)</li>
+        <li><b>DEUST Math/Info/Physique</b> — FST Mohammedia (2021–2023)</li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <h2>Research Internship</h2>
+      <p>
+        <b>Télécom SudParis (2026)</b><br>
+        IA multimodale pour l’évaluation post-AVC :
+        classification IRM 3D, vidéos médicales, XAI, LLMs pour génération de rapports cliniques.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h2>Experience</h2>
+      <ul>
+        <li><b>RAM</b> — RAG Chatbot + sécurité anomalies (40% réduction tickets)</li>
+        <li><b>ONDA</b> — Plateforme full-stack Spring Boot / React (-25% délais)</li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <h2>Projects</h2>
+      <ul>
+        <li>RAG AI Assistant RH (LangChain + HF)</li>
+        <li>NAFAS+ Cardiac Monitoring AI (DL + microservices)</li>
+      </ul>
+    </div>
+
+    <div class="card reveal highlight">
+      <h2>Skills</h2>
+      <p>
+        Python · PyTorch · TensorFlow · Scikit-learn · RAG · LLMs · XAI<br>
+        Spring Boot · React · FastAPI · SQL · Docker · CI/CD · Keycloak
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h2>Certifications</h2>
+      <ul>
+        <li>Oracle GenAI Professional (2025)</li>
+        <li>Microsoft Power BI (2026)</li>
+        <li>IBM Machine Learning (2025)</li>
+      </ul>
+    </div>
+
+    <div class="card reveal">
+      <h2>Languages</h2>
+      <ul>
+        <li>Français — Courant</li>
+        <li>Anglais — B2/C1</li>
+        <li>Arabe — Native</li>
+      </ul>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 — Ilias Benkamoun</p>
+</footer>
+
+<script src="profile.js"></script>
+</body>
 </html>
