@@ -16,7 +16,12 @@
 
 html {
   font: 400 1em/1.33 'Lora', serif;
-  background-color: var(--beige);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 250, 240, 0.92),
+      rgba(246, 241, 231, 0.82)
+    ),
+    var(--beige);
 }
 
 body {
@@ -77,11 +82,12 @@ body {
 }
 
 /* =========================
-   PROFILE IMAGE FIXED
+   PROFILE IMAGE (FIXED LEFT)
 ========================= */
 
 .profile {
-  background: url('https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?q=80&w=1926') center/cover;
+  background: url('https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?q=80&w=1926')
+    center/cover;
   height: 100vh;
 }
 
@@ -89,7 +95,7 @@ body {
 @media (min-width: 55em) {
   .profile {
     position: fixed;
-    top: 60px; /* sous header */
+    top: 60px;
     left: 0;
     width: 40%;
     height: calc(100vh - 60px);
@@ -119,6 +125,7 @@ body {
 article {
   padding: 2em;
   color: var(--ink);
+  background: transparent;
 }
 
 /* header article */
@@ -191,13 +198,36 @@ img {
   vertical-align: middle;
 }
 
-/* blockquote */
+/* =========================
+   BLOCKQUOTE FIXED
+========================= */
+
 blockquote {
-  border-left: 0.2em solid var(--yellow);
+  border-left: 4px solid var(--yellow);
   font-size: 1.4rem;
-  padding: 0.1em 0.5em;
-  line-height: 1.5;
+  padding: 0.6em 1em;
+  line-height: 1.6;
   margin: 2em 0;
+
+  color: var(--ink);
+  background: rgba(252, 247, 4, 0.08);
+  border-radius: 4px;
+  position: relative;
+}
+
+blockquote::before,
+blockquote::after {
+  color: var(--yellow);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+blockquote::before {
+  content: "“ ";
+}
+
+blockquote::after {
+  content: " ”";
 }
 
 /* =========================
