@@ -24,9 +24,9 @@ body {
 /* topbar */
 .topbar {
   border-bottom: 1px solid var(--border);
-  background: #fff;
   position: sticky;
   top: 0;
+  background: white;
   z-index: 10;
 }
 
@@ -44,30 +44,33 @@ nav a {
   margin-left: 16px;
   text-decoration: none;
   color: var(--muted);
-  font-weight: 500;
 }
 
 nav a:hover {
   color: var(--accent);
 }
 
-/* article */
-.article {
-  margin-top: 40px;
+/* hero */
+.hero {
+  height: 320px;
+  background: url("https://images.unsplash.com/photo-1581091870620-4a1d7f7a0a9c");
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--border);
 }
 
 /* typography */
 .kicker {
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   font-size: 0.8rem;
   font-weight: 600;
 }
 
 .title {
   font-family: "Source Serif 4", serif;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin: 10px 0;
   line-height: 1.2;
 }
@@ -77,53 +80,41 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+/* sections */
 h2 {
   margin-top: 40px;
   font-family: "Source Serif 4", serif;
+}
+
+/* images */
+.img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+  filter: contrast(1.05) grayscale(10%);
 }
 
 /* blockquote */
 blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 14px;
+  margin: 20px 0;
   color: var(--muted);
   font-style: italic;
-  margin: 20px 0;
 }
 
-/* code / math */
-pre {
+/* code boxes */
+.box {
   background: #fafafa;
   border: 1px solid var(--border);
   padding: 14px;
+  font-family: monospace;
   border-radius: 6px;
   overflow-x: auto;
-  font-family: monospace;
 }
 
-.equation {
-  background: #fafafa;
-  border: 1px solid var(--border);
-  padding: 10px;
-  display: inline-block;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-.equation-block {
-  background: #fafafa;
-  border: 1px solid var(--border);
-  padding: 14px;
-  font-family: monospace;
-}
-
-/* note */
-.note {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* references */
+/* refs */
 .refs {
   color: var(--muted);
   padding-left: 18px;
@@ -131,14 +122,14 @@ pre {
 
 /* footer */
 .footer {
-  margin-top: 60px;
   border-top: 1px solid var(--border);
   text-align: center;
   padding: 20px;
+  margin-top: 50px;
   color: var(--muted);
 }
 
-/* mobile */
+/* responsive */
 @media (max-width: 600px) {
   .title {
     font-size: 1.8rem;
