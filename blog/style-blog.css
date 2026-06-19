@@ -135,3 +135,30 @@ blockquote {
     font-size: 1.8rem;
   }
 }
+
+/* =========================
+   FIX IMAGES BLOG ACADEMIC
+========================= */
+
+article section img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  /* contrôle visuel propre */
+  max-height: 420px;
+  object-fit: cover;
+
+  margin: 24px auto;
+  border-radius: 8px;
+
+  /* léger style académique */
+  filter: contrast(1.05) grayscale(5%);
+}
+
+/* éviter images énormes sur desktop */
+@media (min-width: 900px) {
+  article section img {
+    max-height: 380px;
+  }
+}
