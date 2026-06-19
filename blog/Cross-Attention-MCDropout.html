@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cross-Attention vs MC-Dropout in multimodal medical AI." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Cross-Attention vs MC-Dropout in Multimodal AI" />
 
   <title>Cross-Attention vs MC-Dropout</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style-blog.css">
+  <link rel="stylesheet" href="style-blog.css"/>
 </head>
 
 <body>
 
 <header class="topbar">
-  <div class="container">
-    <div class="brand">Ilias Ben Kamoun</div>
+  <div class="container topbar-inner">
+    <div class="logo">Ilias Ben Kamoun</div>
     <nav>
       <a href="../index.html">Home</a>
       <a href="./">Blog</a>
@@ -28,15 +27,15 @@
 
 <main class="container article">
 
-  <p class="kicker">Medical AI · Multimodal Learning · Uncertainty</p>
+  <p class="kicker">Multimodal AI · Uncertainty · Deep Learning</p>
 
   <h1 class="title">
-    Cross-Attention vs. MC-Dropout:<br/>
-    How AI Fuses Multimodal Medical Data
+    How Does AI Fuse Our Data?<br/>
+    Cross-Attention vs. MC-Dropout
   </h1>
 
   <p class="subtitle">
-    A comparative analysis of static attention mechanisms and uncertainty-driven inference in clinical imaging systems.
+    Two fundamentally different philosophies for combining multiple sources of information in AI systems.
   </p>
 
   <hr/>
@@ -44,106 +43,124 @@
   <section>
 
     <p>
-      Imagine a multidisciplinary medical board meeting evaluating an acute stroke patient.
-      Around the table sit specialists analyzing NCCT, CTA, and multiple perfusion maps
-      (CBF, CBV, MTT, Tmax).
+      In Artificial Intelligence, modern systems increasingly rely on multiple data sources simultaneously.
+      This paradigm is known as <strong>Multimodal AI</strong>.
     </p>
 
     <p>
-      In theory, each modality is reliable. In practice, some scans are degraded by motion,
-      noise, or acquisition delays. The central question becomes:
-      <strong>which modality should the model trust?</strong>
+      Whether in medical diagnosis or autonomous driving, models must integrate images, signals, text,
+      and sensor data to make decisions.
+    </p>
+
+    <p>
+      However, real-world data is often imperfect. Sensors fail, images blur, and signals become noisy.
+      This raises a critical question:
     </p>
 
     <blockquote>
-      Multimodal fusion is not a prediction problem — it is a trust allocation problem.
+      How should an AI decide which source of information to trust?
     </blockquote>
 
   </section>
 
   <section>
 
-    <h2>1. Cross-Attention: Learning Global Fusion Priors</h2>
+    <h2>1. Cross-Attention: The Weight of Habit</h2>
 
     <p>
-      Cross-Attention, widely used in Transformer architectures, learns fixed statistical
-      relationships between modalities from large datasets.
+      Cross-Attention, introduced through Transformer architectures (<em>Vaswani et al., 2017</em>),
+      learns how to combine modalities based on large-scale training data.
+    </p>
+
+    <p>
+      It behaves like a system that builds <strong>fixed trust patterns</strong>:
+      some modalities are generally more informative than others.
+    </p>
+
+    <p class="note">
+      These learned weights remain constant during inference.
+    </p>
+
+    <p>
+      While this mechanism is extremely powerful for aligning complex representations,
+      it assumes that past reliability predicts future reliability.
+    </p>
+
+    <blockquote>
+      Cross-Attention encodes statistical habits, not situational awareness.
+    </blockquote>
+
+    <p>
+      This becomes problematic when a modality suddenly degrades (e.g., motion blur in medical imaging),
+      yet is still heavily weighted due to historical importance.
+    </p>
+
+  </section>
+
+  <section>
+
+    <h2>2. MC-Dropout: Measuring Doubt in Real-Time</h2>
+
+    <p>
+      MC-Dropout (<em>Gal & Ghahramani, 2016</em>) introduces a Bayesian interpretation of neural networks
+      by activating dropout during inference.
+    </p>
+
+    <p>
+      Instead of producing a single prediction, the model generates multiple stochastic outputs:
     </p>
 
     <pre class="diagram">
-[Modality A] ─┐
-[Modality B] ─┼──► Cross-Attention ───► Static fusion weights
-[Modality C] ─┘
+Input Data
+   ↓
+[ Model with Dropout ON ]
+   ↓
+20–30 Forward Passes
+   ↓
+Variance of Predictions
     </pre>
 
     <p>
-      During training, the model learns that some modalities are generally more informative
-      than others. These learned weights are then frozen at inference time.
-    </p>
-
-    <p>
-      This makes the system robust on average, but rigid for individual cases.
-    </p>
-
-    <blockquote>
-      Cross-Attention optimizes for population-level statistics, not patient-specific reliability.
-    </blockquote>
-
-  </section>
-
-  <section>
-
-    <h2>2. MC-Dropout: Uncertainty-Aware Fusion</h2>
-
-    <p>
-      MC-Dropout (Gal & Ghahramani, 2016) introduces Bayesian approximation by enabling dropout
-      at inference time.
-    </p>
-
-    <p>
-      By running T stochastic forward passes, the model estimates prediction variance:
+      If predictions are consistent, the model is confident.
+      If they diverge, the model is uncertain.
     </p>
 
     <p class="equation">
-      High variance → low confidence<br/>
-      Low variance → high confidence
+      High variance → Unreliable input<br/>
+      Low variance → Reliable input
     </p>
 
     <p>
-      Fusion weights are computed dynamically:
+      This uncertainty is then used to dynamically re-weight each modality.
     </p>
 
     <pre class="equation-block">
 w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
     </pre>
 
-    <p>
-      This allows the model to adaptively down-weight noisy modalities and rely on more reliable ones.
-    </p>
-
     <blockquote>
-      Each modality contributes according to its uncertainty, not its identity.
+      MC-Dropout transforms disagreement into a measurable signal of uncertainty.
     </blockquote>
 
   </section>
 
   <section>
 
-    <h2>3. Clinical Implications</h2>
+    <h2>3. Why This Matters</h2>
 
     <p>
-      Cross-Attention provides strong representational power but lacks explicit awareness
-      of input quality degradation.
+      Cross-Attention provides strong global pattern recognition but lacks adaptability
+      when data quality changes at inference time.
     </p>
 
     <p>
-      MC-Dropout introduces uncertainty estimation, transforming fusion into a
-      <strong>patient-specific adaptive process</strong>.
+      MC-Dropout introduces a form of <strong>self-awareness</strong>, allowing the model
+      to detect when it is uncertain and adjust accordingly.
     </p>
 
     <p>
-      In clinical AI systems where noise is unavoidable, this distinction is critical for safety
-      and interpretability.
+      This shift moves AI systems from rigid statistical learners to adaptive decision-making systems
+      capable of handling real-world noise and unpredictability.
     </p>
 
   </section>
@@ -153,9 +170,8 @@ w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
     <h2>References</h2>
 
     <ul class="refs">
+      <li>Vaswani et al. (2017). Attention Is All You Need. NeurIPS.</li>
       <li>Gal, Y. & Ghahramani, Z. (2016). Dropout as a Bayesian Approximation. ICML.</li>
-      <li>Roy, A. et al. (2019). Bayesian QuickNAT. MICCAI.</li>
-      <li>Amador, J. et al. (2024). Multimodal CT Perfusion Fusion (ISLES).</li>
     </ul>
 
   </section>
