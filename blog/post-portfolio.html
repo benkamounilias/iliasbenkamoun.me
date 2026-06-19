@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Lancer un portfolio scientifique sur GitHub Pages." />
-    <title>Portfolio scientifique sur GitHub Pages — Ilias Ben Kamoun</title>
+    <meta name="description" content="Cross-Attention vs MC-Dropout in multimodal AI." />
+    <title>Cross-Attention vs MC-Dropout — Ilias Ben Kamoun</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="style-blog.css" />
 
+    <link rel="stylesheet" href="style-blog.css" />
   </head>
+
   <body>
+
 <header class="simple-header">
   <div class="simple-header-inner">
     <a href="../index.html" class="logo">Ilias Benkamoun</a>
@@ -26,60 +29,110 @@
 
 <div class="profile"></div>
 
- <article>
+<article>
   <header>
     <h1>
-      <span class="nth-line-1">Why Data</span><br>
-      <span class="nth-line-2">Centric AI?</span>
+      <span class="nth-line-1">Cross-Attention</span><br>
+      <span class="nth-line-2">vs MC-Dropout</span>
     </h1>
-    <p class="lead">The next breakthrough in AI may come from better data, not bigger models.</p>
+    <p class="lead">
+      How AI fuses multimodal medical data and decides what to trust.
+    </p>
   </header>
 
   <hr>
 
   <section>
+
     <p>
-      Every week, a new architecture appears: a new Transformer, a new attention mechanism, or another neural network variant claiming better results.
-      Yet, an important question is often overlooked: what if the biggest gains come from improving the data rather than the model?
+      In modern Artificial Intelligence, systems increasingly rely on multiple data sources at once.
+      This is known as <strong>multimodal learning</strong>.
     </p>
 
     <p>
-      Modern architectures are already incredibly powerful. For many tasks, switching to a more complex model brings only marginal improvements.
-      Meanwhile, noisy labels, inconsistent annotations, missing samples, and data imbalance continue to limit performance.
+      In domains like medical imaging or autonomous driving, AI must combine:
+      images, scans, signals, and sensor data to make decisions.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1581091870620-4a1d7f7a0a9c"
+         alt="Medical AI imaging" />
+
+    <p>
+      But real-world data is messy: images can be blurred, sensors can fail,
+      and signals can be noisy or incomplete.
     </p>
 
     <blockquote>
-      Better data often beats a better architecture.
+      The real challenge is not prediction — it is deciding what to trust.
     </blockquote>
 
+    <h2>Cross-Attention: The Weight of Habit</h2>
+
     <p>
-      This idea is known as <strong>Data-Centric AI</strong>. Instead of constantly redesigning models, researchers focus on improving dataset quality,
-      annotation consistency, diversity, and preprocessing pipelines.
+      Cross-Attention (Vaswani et al., 2017) learns fixed relationships between modalities
+      based on large datasets.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c"
+         alt="Neural network visualization" />
+
+    <p>
+      It assigns learned importance weights: some modalities are generally more reliable than others.
+      These weights remain fixed during inference.
     </p>
 
     <p>
-      In fields such as medical imaging, computer vision, and natural language processing, cleaner and more representative data can often deliver
-      larger gains than introducing yet another architectural innovation.
+      This makes Cross-Attention powerful but rigid when input quality changes.
+    </p>
+
+    <blockquote>
+      Cross-Attention encodes global statistics, not situational awareness.
+    </blockquote>
+
+    <h2>MC-Dropout: Measuring Doubt in Real Time</h2>
+
+    <p>
+      MC-Dropout (Gal & Ghahramani, 2016) estimates uncertainty by enabling dropout during inference.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
+         alt="AI uncertainty visualization" />
+
+    <p>
+      Instead of one prediction, the model runs multiple stochastic forward passes.
     </p>
 
     <p>
-      Models learn from examples. If the examples are flawed, the model learns flawed patterns. The quality of an AI system therefore depends not
-      only on its architecture, but also on the quality of the data it sees.
+      High variance means low confidence, while low variance means high confidence.
+    </p>
+
+    <blockquote>
+      MC-Dropout turns disagreement into a measurable signal of uncertainty.
+    </blockquote>
+
+    <h2>Why This Matters</h2>
+
+    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789"
+         alt="AI decision system medical" />
+
+    <p>
+      Cross-Attention is strong for learning patterns, but it cannot adapt dynamically to noisy inputs.
     </p>
 
     <p>
-      As AI continues to evolve, perhaps the most valuable question is no longer “How can we build a better model?” but rather “How can we build a better dataset?”
+      MC-Dropout introduces self-awareness: the model can detect when it is uncertain and adjust its decisions.
+    </p>
+
+    <p>
+      This is crucial in medical AI where data quality is never guaranteed.
     </p>
 
     <p><strong>Ilias Benkamoun</strong></p>
 
-    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="Artificial Intelligence">
-    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="Data Science">
   </section>
 </article>
 
-
-  <footer class="simple-footer">
+<footer class="simple-footer">
   <p>© 2026 — Ilias Benkamoun</p>
 
   <div class="footer-links">
@@ -88,6 +141,7 @@
   </div>
 </footer>
 
-    <script src="../main.js"></script>
+<script src="../main.js"></script>
+
   </body>
 </html>
