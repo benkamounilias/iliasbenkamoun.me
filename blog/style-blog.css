@@ -84,7 +84,7 @@ article {
    height:50px;
   max-width: 900px;
   margin: 15px auto 12px auto; /* réduit fortement l'espace */
-  border-radius: 10px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -93,7 +93,7 @@ article {
   height: 340px;
   object-fit: cover;
   display: block;
-  border-radius: 10px;
+  border-radius:0px;
   filter: contrast(1.05) grayscale(6%);
 }
 
