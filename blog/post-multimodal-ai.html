@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Pipeline multimodal pour la santé et l'IA médicale." />
-    <title>Pipeline multimodal pour la santé — Ilias Ben Kamoun</title>
+    <meta name="description" content="Cross-Attention vs MC-Dropout en fusion multimodale médicale." />
+    <title>Cross-Attention vs MC-Dropout — Ilias Ben Kamoun</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../style-blog.css" />
   </head>
+
   <body>
+
     <header class="header">
       <a class="logo" href="../">Ilias Ben Kamoun</a>
       <button class="menu-button" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
@@ -22,33 +25,121 @@
 
     <main>
       <section class="template-section">
-        <h2 class="section-title">Pipeline multimodal pour la santé</h2>
+
+        <h2 class="section-title">Cross-Attention vs MC-Dropout</h2>
+
         <div class="content" style="max-width: 90rem; margin: 0 auto 4rem; text-align:center;">
-          <p class="article-meta">Article scientifique — 6 min de lecture</p>
+          <p class="article-meta">Multimodal Medical AI — 6 min read</p>
         </div>
+
         <article class="template-card article-body">
-        <p>
-          L’IA multimodale en santé est complexe car les images, les vidéos et les métadonnées cliniques
-          arrivent rarement dans un format propre et parfaitement aligné. L’objectif principal est de
-          construire une chaîne reproductible, mesurable et interprétable.
-        </p>
-        <h2>Points clés</h2>
-        <ul>
-          <li>Prétraitement fiable sur des sources médicales hétérogènes.</li>
-          <li>Suivi rigoureux des expériences et versioning pour la reproductibilité.</li>
-          <li>Explicabilité avec SHAP et Grad-CAM pour l’analyse clinique.</li>
-        </ul>
-        <h2>Approche adoptée</h2>
-        <p>
-          Je préfère commencer par une baseline simple, puis améliorer la qualité des données,
-          l’ingénierie des features et l’évaluation avant d’augmenter la complexité du modèle.
-          Cette méthode donne souvent des résultats plus rapides et plus fiables qu’une approche
-          directement centrée sur une architecture lourde.
-        </p>
+
+          <p>
+            Imagine a multidisciplinary medical board meeting evaluating an acute stroke patient.
+            Around the table sit several specialists, each analyzing a different imaging modality:
+            NCCT, CTA, and multiple perfusion maps (CBF, CBV, MTT, Tmax).
+          </p>
+
+          <p>
+            In an ideal world, every scan is clean and reliable. In reality, one modality might be
+            blurred due to patient motion, while another suffers from acquisition delay or noise.
+            The core challenge in multimodal medical AI is deciding which source of information
+            should be trusted, and when.
+          </p>
+
+          <p>
+            Two major paradigms address this problem: <strong>Cross-Attention</strong> and
+            <strong>Monte Carlo Dropout (MC-Dropout)</strong>. While both aim to fuse multimodal
+            data effectively, they rely on fundamentally different philosophies.
+          </p>
+
+          <h2>1. Cross-Attention: Learning Global Fusion Rules</h2>
+
+          <p>
+            Cross-Attention, popularized by Transformer architectures, behaves like a medical team
+            trained over thousands of cases to implicitly agree on how much each modality matters.
+          </p>
+
+          <p>
+            During training, the model learns <strong>global statistical weights</strong> that encode
+            how informative each modality is on average across the dataset.
+            Once deployed, these weights remain fixed.
+          </p>
+
+          <blockquote>
+            The model optimizes for the average patient, not the current patient.
+          </blockquote>
+
+          <p>
+            This makes Cross-Attention powerful and stable, but also rigid. If a modality becomes
+            corrupted in a specific patient (for example due to motion artifacts), the model may still
+            over-trust it because its learned weights do not adapt at inference time.
+          </p>
+
+          <h2>2. MC-Dropout: Data-Driven Uncertainty at Inference</h2>
+
+          <p>
+            MC-Dropout takes a different approach: instead of relying only on learned averages,
+            it explicitly measures uncertainty at test time.
+          </p>
+
+          <p>
+            By keeping dropout active during inference and running multiple stochastic forward passes,
+            the model produces a distribution of predictions for each modality.
+          </p>
+
+          <p>
+            High variance indicates uncertainty; low variance indicates confidence. These variances
+            are then converted into adaptive fusion weights:
+          </p>
+
+          <p>
+            <code>
+              w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
+            </code>
+          </p>
+
+          <p>
+            In practice, this means the model dynamically reduces the influence of noisy modalities
+            and increases reliance on stable ones for each individual patient.
+          </p>
+
+          <blockquote>
+            Each modality “votes” based on how confident it is about this specific case.
+          </blockquote>
+
+          <h2>Why This Matters for Clinical AI</h2>
+
+          <p>
+            Cross-Attention provides strong representational power for multimodal interactions,
+            but lacks explicit awareness of input quality degradation.
+          </p>
+
+          <p>
+            MC-Dropout introduces a complementary mechanism: <strong>uncertainty-aware fusion</strong>.
+            This transforms multimodal learning from a static architecture into a dynamic decision system
+            that adapts to each patient’s data quality.
+          </p>
+
+          <p>
+            In clinical settings, this distinction is critical. Medical data is rarely clean, and a model
+            that can quantify its own uncertainty is inherently safer and more reliable.
+          </p>
+
+          <h2>Key References</h2>
+
+          <ul>
+            <li>Gal, Y. & Ghahramani, Z. (2016). Dropout as a Bayesian Approximation (ICML).</li>
+            <li>Roy, A. et al. (2019). Bayesian QuickNAT — Model uncertainty in brain segmentation (MICCAI).</li>
+            <li>Amador, J. et al. (2024). 4D CT Perfusion Fusion Architectures (ISLES).</li>
+          </ul>
+
         </article>
+
         <div style="max-width: 90rem; margin: 2rem auto 0; font-size: 1.6rem; text-align:center;">
-          <a href="./">← Retour au blog</a>
+          <a href="./">← Back to blog</a>
         </div>
+
       </section>
     </main>
 
@@ -57,5 +148,6 @@
     </footer>
 
     <script src="../main.js"></script>
+
   </body>
 </html>
