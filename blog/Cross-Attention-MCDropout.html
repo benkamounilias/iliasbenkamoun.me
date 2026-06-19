@@ -25,6 +25,8 @@
   </div>
 </header>
 
+<div class="hero"></div>
+
 <main class="container article">
 
   <p class="kicker">Multimodal AI · Uncertainty · Deep Learning</p>
@@ -35,143 +37,121 @@
   </h1>
 
   <p class="subtitle">
-    Two fundamentally different philosophies for combining multiple sources of information in AI systems.
+    Two fundamentally different philosophies for combining multimodal medical information.
   </p>
+
+  <img class="img" src="https://images.unsplash.com/photo-1581091870620-4a1d7f7a0a9c" alt="Medical AI"/>
 
   <hr/>
 
+  <!-- INTRO -->
   <section>
 
     <p>
-      In Artificial Intelligence, modern systems increasingly rely on multiple data sources simultaneously.
-      This paradigm is known as <strong>Multimodal AI</strong>.
+      In modern Artificial Intelligence, systems increasingly rely on multiple sources of information.
+      This is known as <strong>Multimodal Learning</strong>.
     </p>
 
     <p>
-      Whether in medical diagnosis or autonomous driving, models must integrate images, signals, text,
-      and sensor data to make decisions.
-    </p>
-
-    <p>
-      However, real-world data is often imperfect. Sensors fail, images blur, and signals become noisy.
-      This raises a critical question:
+      From medical imaging to autonomous driving, AI must integrate heterogeneous inputs:
+      images, signals, and sensor streams.
     </p>
 
     <blockquote>
-      How should an AI decide which source of information to trust?
+      The key challenge is not prediction — it is deciding what to trust.
     </blockquote>
 
   </section>
 
+  <!-- CROSS ATTENTION -->
   <section>
 
     <h2>1. Cross-Attention: The Weight of Habit</h2>
 
     <p>
-      Cross-Attention, introduced through Transformer architectures (<em>Vaswani et al., 2017</em>),
-      learns how to combine modalities based on large-scale training data.
+      Cross-Attention (Vaswani et al., 2017) learns fixed relationships between modalities
+      from large-scale datasets.
     </p>
+
+    <img class="img" src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="Neural network"/>
 
     <p>
-      It behaves like a system that builds <strong>fixed trust patterns</strong>:
-      some modalities are generally more informative than others.
-    </p>
-
-    <p class="note">
-      These learned weights remain constant during inference.
-    </p>
-
-    <p>
-      While this mechanism is extremely powerful for aligning complex representations,
-      it assumes that past reliability predicts future reliability.
+      It encodes statistical priors: some modalities are generally more informative than others.
+      These learned weights remain fixed at inference time.
     </p>
 
     <blockquote>
-      Cross-Attention encodes statistical habits, not situational awareness.
+      Cross-Attention encodes global statistics, not situational awareness.
     </blockquote>
 
     <p>
-      This becomes problematic when a modality suddenly degrades (e.g., motion blur in medical imaging),
-      yet is still heavily weighted due to historical importance.
+      This makes it powerful but rigid when faced with corrupted or degraded inputs.
     </p>
 
   </section>
 
+  <!-- MC DROPOUT -->
   <section>
 
     <h2>2. MC-Dropout: Measuring Doubt in Real-Time</h2>
 
     <p>
-      MC-Dropout (<em>Gal & Ghahramani, 2016</em>) introduces a Bayesian interpretation of neural networks
-      by activating dropout during inference.
+      MC-Dropout (Gal & Ghahramani, 2016) introduces uncertainty estimation by enabling dropout during inference.
     </p>
+
+    <img class="img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="AI uncertainty"/>
 
     <p>
-      Instead of producing a single prediction, the model generates multiple stochastic outputs:
+      Instead of a single prediction, the model runs multiple stochastic forward passes.
     </p>
 
-    <pre class="diagram">
-Input Data
-   ↓
-[ Model with Dropout ON ]
-   ↓
-20–30 Forward Passes
-   ↓
-Variance of Predictions
+    <pre class="box">
+Input → 20 forward passes → variance estimation → confidence score
     </pre>
 
     <p>
-      If predictions are consistent, the model is confident.
-      If they diverge, the model is uncertain.
+      High variance indicates uncertainty; low variance indicates confidence.
     </p>
 
-    <p class="equation">
-      High variance → Unreliable input<br/>
-      Low variance → Reliable input
-    </p>
-
-    <p>
-      This uncertainty is then used to dynamically re-weight each modality.
-    </p>
-
-    <pre class="equation-block">
+    <pre class="box">
 w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
     </pre>
 
     <blockquote>
-      MC-Dropout transforms disagreement into a measurable signal of uncertainty.
+      MC-Dropout turns disagreement into a measurable signal of uncertainty.
     </blockquote>
 
   </section>
 
+  <!-- IMPORTANCE -->
   <section>
 
     <h2>3. Why This Matters</h2>
 
+    <img class="img" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789" alt="AI medical decision"/>
+
     <p>
-      Cross-Attention provides strong global pattern recognition but lacks adaptability
-      when data quality changes at inference time.
+      Cross-Attention provides strong representation learning but lacks adaptability to noisy inputs.
     </p>
 
     <p>
-      MC-Dropout introduces a form of <strong>self-awareness</strong>, allowing the model
-      to detect when it is uncertain and adjust accordingly.
+      MC-Dropout introduces self-awareness: the ability for the model to know when it is uncertain.
     </p>
 
-    <p>
-      This shift moves AI systems from rigid statistical learners to adaptive decision-making systems
-      capable of handling real-world noise and unpredictability.
-    </p>
+    <blockquote>
+      This shifts AI from static modeling to adaptive decision-making systems.
+    </blockquote>
 
   </section>
 
+  <!-- REFERENCES -->
   <section>
 
     <h2>References</h2>
 
     <ul class="refs">
-      <li>Vaswani et al. (2017). Attention Is All You Need. NeurIPS.</li>
-      <li>Gal, Y. & Ghahramani, Z. (2016). Dropout as a Bayesian Approximation. ICML.</li>
+      <li>Vaswani et al. (2017). Attention Is All You Need.</li>
+      <li>Gal & Ghahramani (2016). Dropout as a Bayesian Approximation.</li>
     </ul>
 
   </section>
@@ -179,7 +159,7 @@ w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
 </main>
 
 <footer class="footer">
-  <p>© 2026 Ilias Ben Kamoun</p>
+  © 2026 — Ilias Ben Kamoun
 </footer>
 
 </body>
