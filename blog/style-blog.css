@@ -1,3 +1,8 @@
+
+/* =========================
+   BASE
+========================= */
+
 :root {
   --text: #111;
   --muted: #555;
@@ -14,151 +19,201 @@ body {
   line-height: 1.75;
 }
 
-/* container */
-.container {
+/* =========================
+   CONTAINER
+========================= */
+
+.container,
+article {
   max-width: 900px;
   margin: auto;
   padding: 24px;
 }
 
-/* topbar */
-.topbar {
-  border-bottom: 1px solid var(--border);
+/* =========================
+   HEADER TOP BAR
+========================= */
+
+.simple-header {
   position: sticky;
   top: 0;
   background: white;
+  border-bottom: 1px solid var(--border);
   z-index: 10;
 }
 
-.topbar-inner {
+.simple-header-inner {
+  max-width: 1000px;
+  margin: auto;
+  padding: 14px 24px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
+.simple-header .logo {
   font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
 }
 
-nav a {
+.nav a {
   margin-left: 16px;
   text-decoration: none;
   color: var(--muted);
+  font-weight: 500;
 }
 
-nav a:hover {
+.nav a:hover {
   color: var(--accent);
 }
 
-/* hero */
-.hero {
-  height: 320px;
-  background: url("https://images.unsplash.com/photo-1581091870620-4a1d7f7a0a9c");
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid var(--border);
+/* =========================
+   PROFILE (OPTIONAL LEFT IMAGE)
+========================= */
+
+.profile {
+  display: none;
 }
 
-/* typography */
-.kicker {
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
+/* =========================
+   HERO IMAGE (IMPORTANT)
+========================= */
 
-.title {
-  font-family: "Source Serif 4", serif;
-  font-size: 2.6rem;
-  margin: 10px 0;
-  line-height: 1.2;
-}
-
-.subtitle {
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-
-/* sections */
-h2 {
-  margin-top: 40px;
-  font-family: "Source Serif 4", serif;
-}
-
-/* images */
-.img {
+.hero-image {
   width: 100%;
-  border-radius: 6px;
-  margin: 20px 0;
-  border: 1px solid var(--border);
-  filter: contrast(1.05) grayscale(10%);
+  max-width: 900px;
+  margin: 25px auto 40px auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* blockquote */
+.hero-image img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+
+  filter: contrast(1.05) grayscale(6%);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1 {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.nth-line-1,
+.nth-line-2 {
+  display: block;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+/* section spacing */
+section {
+  margin-top: 30px;
+}
+
+/* =========================
+   PARAGRAPHS
+========================= */
+
+p {
+  margin-bottom: 16px;
+}
+
+/* =========================
+   QUOTES
+========================= */
+
 blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 14px;
   margin: 20px 0;
   color: var(--muted);
   font-style: italic;
-}
-
-/* code boxes */
-.box {
-  background: #fafafa;
-  border: 1px solid var(--border);
-  padding: 14px;
-  font-family: monospace;
+  background: #faf9f6;
+  padding: 14px 16px;
   border-radius: 6px;
-  overflow-x: auto;
 }
 
-/* refs */
-.refs {
-  color: var(--muted);
-  padding-left: 18px;
+/* =========================
+   IMAGES (inside article)
+========================= */
+
+img {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  display: block;
+
+  border-radius: 10px;
+  object-fit: cover;
+
+  max-height: 420px;
+
+  filter: contrast(1.05) grayscale(8%);
 }
 
-/* footer */
-.footer {
+/* =========================
+   HORIZONTAL LINE
+========================= */
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 30px 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.simple-footer {
   border-top: 1px solid var(--border);
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   margin-top: 50px;
   color: var(--muted);
 }
 
-/* responsive */
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-  }
+.footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
 }
 
 /* =========================
-   FIX IMAGES BLOG ACADEMIC
+   RESPONSIVE
 ========================= */
 
-article section img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
-  /* contrôle visuel propre */
-  max-height: 420px;
-  object-fit: cover;
+  .hero-image img {
+    height: 220px;
+  }
 
-  margin: 24px auto;
-  border-radius: 8px;
-
-  /* léger style académique */
-  filter: contrast(1.05) grayscale(5%);
-}
-
-/* éviter images énormes sur desktop */
-@media (min-width: 900px) {
-  article section img {
-    max-height: 380px;
+  img {
+    max-height: 260px;
   }
 }
