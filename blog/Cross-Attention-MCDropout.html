@@ -1,166 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Cross-Attention vs MC-Dropout in Multimodal AI" />
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cross-Attention vs MC-Dropout in Multimodal AI." />
+    <title>Cross-Attention vs MC-Dropout — Ilias Benkamoun</title>
 
-  <title>Cross-Attention vs MC-Dropout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-blog.css" />
+  </head>
 
-  <link rel="stylesheet" href="style-blog.css"/>
-</head>
+  <body>
 
-<body>
+    <header class="simple-header">
+      <div class="simple-header-inner">
+        <a href="../index.html" class="logo">Ilias Benkamoun</a>
 
-<header class="topbar">
-  <div class="container topbar-inner">
-    <div class="logo">Ilias Ben Kamoun</div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="./">Blog</a>
-      <a href="../profile.html">Profile</a>
-    </nav>
-  </div>
-</header>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./">Blog</a>
+          <a href="../profile.html">Profile</a>
+        </nav>
+      </div>
+    </header>
 
-<div class="hero"></div>
+    <div class="profile"></div>
 
-<main class="container article">
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789"
+        alt="Artificial Intelligence and Medical Data Fusion"
+      />
+    </div>
 
-  <p class="kicker">Multimodal AI · Uncertainty · Deep Learning</p>
+    <article>
+      <header>
+        <h1>
+          <span class="nth-line-1">How Does AI</span><br />
+          <span class="nth-line-2">Fuse Our Data?</span>
+        </h1>
 
-  <h1 class="title">
-    How Does AI Fuse Our Data?<br/>
-    Cross-Attention vs. MC-Dropout
-  </h1>
+        <p class="lead">
+          Cross-Attention vs. MC-Dropout: two fundamentally different ways for AI
+          systems to decide what information to trust.
+        </p>
+      </header>
 
-  <p class="subtitle">
-    Two fundamentally different philosophies for combining multimodal medical information.
-  </p>
+      <hr />
 
-  <img class="img" src="https://images.unsplash.com/photo-1581091870620-4a1d7f7a0a9c" alt="Medical AI"/>
+      <section>
 
-  <hr/>
+        <p>
+          In the world of Artificial Intelligence, we are increasingly asking
+          models to make decisions by combining multiple sources of information.
+          This is what we call <strong>Multimodal AI</strong>.
+        </p>
 
-  <!-- INTRO -->
-  <section>
+        <p>
+          Consider a complex medical diagnosis or a self-driving vehicle. To
+          make the right decision, the AI must simultaneously analyze several
+          streams of information: medical images, sensor data, text records, or
+          environmental signals.
+        </p>
 
-    <p>
-      In modern Artificial Intelligence, systems increasingly rely on multiple sources of information.
-      This is known as <strong>Multimodal Learning</strong>.
-    </p>
+        <p>
+          But what happens when one of these sources becomes unreliable? What if
+          a medical scan is blurry because the patient moved, or a sensor is
+          affected by adverse conditions?
+        </p>
 
-    <p>
-      From medical imaging to autonomous driving, AI must integrate heterogeneous inputs:
-      images, signals, and sensor streams.
-    </p>
+        <blockquote>
+          The challenge is not only understanding information — it is knowing
+          which information deserves trust.
+        </blockquote>
 
-    <blockquote>
-      The key challenge is not prediction — it is deciding what to trust.
-    </blockquote>
+        <h2>1. Cross-Attention: The Weight of Habit</h2>
 
-  </section>
+        <p>
+          Cross-Attention, popularized by Transformer architectures such as GPT,
+          behaves like a team of experts who have worked together for years.
+        </p>
 
-  <!-- CROSS ATTENTION -->
-  <section>
+        <p>
+          Through training on thousands of examples, the model learns that some
+          information sources are generally more informative than others.
+          Consequently, it assigns fixed trust levels to each modality.
+        </p>
 
-    <h2>1. Cross-Attention: The Weight of Habit</h2>
+        <p>
+          Historically reliable sources receive more attention, while less
+          informative sources receive less influence in the final decision.
+        </p>
 
-    <p>
-      Cross-Attention (Vaswani et al., 2017) learns fixed relationships between modalities
-      from large-scale datasets.
-    </p>
+        <blockquote>
+          Cross-Attention learns statistical habits from past experience.
+        </blockquote>
 
-    <img class="img" src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="Neural network"/>
+        <p>
+          This strategy is remarkably effective for connecting complex
+          relationships between modalities. However, these learned trust
+          patterns remain largely fixed once training is complete.
+        </p>
 
-    <p>
-      It encodes statistical priors: some modalities are generally more informative than others.
-      These learned weights remain fixed at inference time.
-    </p>
+        <p>
+          If a modality becomes corrupted in a specific case, the model may
+          continue relying on it simply because historical data taught it to do
+          so.
+        </p>
 
-    <blockquote>
-      Cross-Attention encodes global statistics, not situational awareness.
-    </blockquote>
+        <h2>2. MC-Dropout: Measuring Doubt in Real Time</h2>
 
-    <p>
-      This makes it powerful but rigid when faced with corrupted or degraded inputs.
-    </p>
+        <p>
+          MC-Dropout takes a completely different approach. Instead of relying
+          solely on learned habits, it allows the model to estimate its own
+          uncertainty during inference.
+        </p>
 
-  </section>
+        <p>
+          Rather than generating a single prediction, the AI performs multiple
+          forward passes while keeping Dropout active.
+        </p>
 
-  <!-- MC DROPOUT -->
-  <section>
+        <blockquote>
+          If the model repeatedly changes its mind, uncertainty is high.
+          If the answers remain consistent, confidence is high.
+        </blockquote>
 
-    <h2>2. MC-Dropout: Measuring Doubt in Real-Time</h2>
+        <p>
+          By comparing the variability of these predictions, the model can
+          quantify how certain it is about a specific source of information.
+        </p>
 
-    <p>
-      MC-Dropout (Gal & Ghahramani, 2016) introduces uncertainty estimation by enabling dropout during inference.
-    </p>
+        <p>
+          High variance indicates confusion, while low variance indicates
+          confidence.
+        </p>
 
-    <img class="img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="AI uncertainty"/>
+        <p>
+          This uncertainty estimate can then be used to dynamically adjust the
+          importance of each modality.
+        </p>
 
-    <p>
-      Instead of a single prediction, the model runs multiple stochastic forward passes.
-    </p>
+        <p>
+          If a scan is degraded or noisy, the model detects its own uncertainty
+          and automatically reduces the influence of that modality in the final
+          fusion process.
+        </p>
 
-    <pre class="box">
-Input → 20 forward passes → variance estimation → confidence score
-    </pre>
+        <h2>3. Why This Matters for Future AI Systems</h2>
 
-    <p>
-      High variance indicates uncertainty; low variance indicates confidence.
-    </p>
+        <p>
+          Cross-Attention remains one of the most powerful mechanisms ever
+          developed for multimodal learning and representation.
+        </p>
 
-    <pre class="box">
-w_m = exp(-λ · σ²_m) / Σ exp(-λ · σ²)
-    </pre>
+        <p>
+          Yet real-world environments are unpredictable. Sensors fail, data
+          becomes corrupted, and uncertainty is unavoidable.
+        </p>
 
-    <blockquote>
-      MC-Dropout turns disagreement into a measurable signal of uncertainty.
-    </blockquote>
+        <p>
+          Integrating uncertainty-aware mechanisms such as MC-Dropout introduces
+          a valuable layer of self-assessment into AI systems.
+        </p>
 
-  </section>
+        <blockquote>
+          Future AI should not only make decisions—it should know when it might
+          be wrong.
+        </blockquote>
 
-  <!-- IMPORTANCE -->
-  <section>
+        <p>
+          By teaching algorithms to recognize their own doubt, we move from
+          static decision systems toward adaptive and trustworthy AI capable of
+          operating safely in real-world conditions.
+        </p>
 
-    <h2>3. Why This Matters</h2>
+        <h2>References</h2>
 
-    <img class="img" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789" alt="AI medical decision"/>
+        <p>
+          <strong>Gal, Y., & Ghahramani, Z. (2016).</strong><br />
+          Dropout as a Bayesian Approximation: Representing Model Uncertainty in
+          Deep Learning. ICML.
+        </p>
 
-    <p>
-      Cross-Attention provides strong representation learning but lacks adaptability to noisy inputs.
-    </p>
+        <p>
+          <strong>Vaswani et al. (2017).</strong><br />
+          Attention Is All You Need. NIPS.
+        </p>
 
-    <p>
-      MC-Dropout introduces self-awareness: the ability for the model to know when it is uncertain.
-    </p>
+        <p><strong>Ilias Benkamoun</strong></p>
 
-    <blockquote>
-      This shifts AI from static modeling to adaptive decision-making systems.
-    </blockquote>
+      </section>
+    </article>
 
-  </section>
+    <footer class="simple-footer">
+      <p>© 2026 — Ilias Benkamoun</p>
 
-  <!-- REFERENCES -->
-  <section>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../profile.html">Profile</a>
+      </div>
+    </footer>
 
-    <h2>References</h2>
+    <script src="../main.js"></script>
 
-    <ul class="refs">
-      <li>Vaswani et al. (2017). Attention Is All You Need.</li>
-      <li>Gal & Ghahramani (2016). Dropout as a Bayesian Approximation.</li>
-    </ul>
-
-  </section>
-
-</main>
-
-<footer class="footer">
-  © 2026 — Ilias Ben Kamoun
-</footer>
-
-</body>
+  </body>
 </html>
